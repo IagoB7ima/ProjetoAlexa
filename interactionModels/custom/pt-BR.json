@@ -1,0 +1,91 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "universidade lima",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "HelloWorldIntent",
+          "slots": [],
+          "samples": [
+            "olá",
+            "como vai você",
+            "diga oi mundo",
+            "diga oi",
+            "oi",
+            "diga olá mundo",
+            "diga olá"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AulaDeHojeIntent",
+          "slots": [],
+          "samples": [
+            "aulas de hoje",
+            "aula de hoje "
+          ]
+        },
+        {
+          "name": "AulaDeOntemIntent",
+          "slots": [],
+          "samples": [
+            "aulas de ontem",
+            "aula de ontem"
+          ]
+        },
+        {
+          "name": "AulaDeAmanhaIntent",
+          "slots": [],
+          "samples": [
+            "aulas de amanhã",
+            "aula de amanhã "
+          ]
+        },
+        {
+          "name": "NotasIntent",
+          "slots": [],
+          "samples": [
+            "Notas"
+          ]
+        },
+        {
+          "name": "HorarioCoordenadorIntent",
+          "slots": [],
+          "samples": [
+            "horário do coordenador",
+            "coordenador "
+          ]
+        },
+        {
+          "name": "MatriculaIntent",
+          "slots": [
+            {
+              "name": "Matricula",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "matrícula {Matricula}"
+          ]
+        }
+      ],
+      "types": []
+    }
+  },
+  "version": "14"
+}

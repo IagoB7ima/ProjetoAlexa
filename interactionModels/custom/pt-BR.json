@@ -33,33 +33,38 @@
           "samples": []
         },
         {
-          "name": "AulaDeHojeIntent",
-          "slots": [],
-          "samples": [
-            "aulas de hoje",
-            "aula de hoje "
-          ]
-        },
-        {
-          "name": "AulaDeOntemIntent",
-          "slots": [],
-          "samples": [
-            "aulas de ontem",
-            "aula de ontem"
-          ]
-        },
-        {
-          "name": "AulaDeAmanhaIntent",
-          "slots": [],
-          "samples": [
-            "aulas de amanhã",
-            "aula de amanhã "
-          ]
-        },
-        {
           "name": "NotasIntent",
           "slots": [],
           "samples": [
+            "qual é minha nota semestral ",
+            "qual é a minha nota ",
+            "quais são minhas notas ",
+            "qual é minha nota ",
+            "boletim ",
+            "boletim de notas ",
+            "qual a minha nota ",
+            "quais as minhas  notas ",
+            "minha nota ",
+            "quais as minhas notas ",
+            "minhas notas ",
+            "quais são as minhas notas",
+            "minha nota semestral ",
+            "quais são minhas notas semestrais ",
+            "minhas notas semestrais ",
+            "qual é a minha nota semestral ",
+            "nota semestral ",
+            "qual a minha nota semestral ",
+            "quais as minhas notas semestrais ",
+            "notas semestrais ",
+            "nota do semestrse ",
+            "quais são as minhas notas semestrais ",
+            "notas do semestre",
+            "a minha nota ",
+            "as minhas notas ",
+            "a nota semestral",
+            "as notas semestrais",
+            "a minha nota semestral ",
+            "as minhas notas semestrais ",
             "Notas"
           ]
         },
@@ -67,6 +72,52 @@
           "name": "HorarioCoordenadorIntent",
           "slots": [],
           "samples": [
+            "qual é o horário da coordenador",
+            "qual é o horário da coordenadora",
+            "qual é o calendário do coordenadora",
+            "qual é o calendário do coordenador",
+            "qual o calendário do coordenador",
+            "quail o calendário da coordenadora",
+            "qual o horário da coordenadora",
+            "qual a agenda do coordenador",
+            "qual é a agenda da coordenadora",
+            "qual a agenda da coordenadora",
+            "quais os horários da coordenadora",
+            "calendáro coordenador",
+            "calendáro coordenadora",
+            "calendáro do coordenadora",
+            "calendáro da coordenadora",
+            "agenda coordenadora",
+            "agenda da coordenadora",
+            "disponibilidade coordenadora",
+            "diponibilidade da coordenadora",
+            "horários coordenadora",
+            "horários da coordenadora",
+            "horário coordenadora",
+            "horário da coordenadora ",
+            "horário da coordenação ",
+            "horários do coordenador",
+            "horários coordenador ",
+            "coordenação",
+            "horário coordenação ",
+            "horários da coordenação ",
+            "horários coordenação ",
+            "disponibilidade coordenação ",
+            "disponibilidade da coordenação",
+            "quais os horários do coordenador ",
+            "qual o horário do coordenador  ",
+            "qual é o horário do coordenador ",
+            "quais os horários da coordenação",
+            "qual o horário da coordenação ",
+            "quais são os horários da coordenação ",
+            "qual é o horário da coordenação ",
+            "agenda coordenação ",
+            "agenda da coordenção ",
+            "agenda coordenador ",
+            "disponibilidade coordenador",
+            "horário coordenador",
+            "agenda do coordenador",
+            "disponibilidade do coordenador",
             "horário do coordenador",
             "coordenador "
           ]
@@ -82,10 +133,92 @@
           "samples": [
             "matrícula {Matricula}"
           ]
+        },
+        {
+          "name": "AulaIntent",
+          "slots": [
+            {
+              "name": "diaSemana",
+              "type": "AMAZON.DayOfWeek"
+            }
+          ],
+          "samples": [
+            "Aulas que terei no {diaSemana}",
+            "Aula que terei no {diaSemana}",
+            "Quais aulas terei no {diaSemana}",
+            "Qual aula terei {diaSemana}",
+            "Aula que terei {diaSemana}",
+            "Aulas que terei {diaSemana}",
+            "Aulas que tenho {diaSemana}",
+            "Aula que tenho {diaSemana}",
+            "Que aula terei no {diaSemana}",
+            "Que aula terei {diaSemana}",
+            "Quais aulas terei {diaSemana}",
+            "Qual aula terei no {diaSemana}",
+            "Qual aula tenho no {diaSemana}",
+            "Que aula tenho no {diaSemana}",
+            "Quais aulas tenho no {diaSemana}",
+            "Quais aulas tenho na {diaSemana}",
+            "Que aulas tenho na {diaSemana} ",
+            "Que aula tenho na {diaSemana}",
+            "Quais aulas tenho no próximo {diaSemana}",
+            "Quais aulas tenho na próxima {diaSemana}",
+            "Que aula tenho no  próximo {diaSemana}",
+            "Que aula tenho na próxima {diaSemana}",
+            "Quais aulas tenho {diaSemana}",
+            "Que aula tenho {diaSemana}",
+            "Qual a aula da {diaSemana}",
+            "Quais as aulas da próxia {diaSemana}",
+            "Quais as aulas de {diaSemana}",
+            "Qual a aula de {diaSemana}",
+            "Aulas {diaSemana}",
+            "Aula de {diaSemana}",
+            "Aula {diaSemana}",
+            "Quais são as aulas de {diaSemana} ",
+            " Aulas de {diaSemana}"
+          ]
+        },
+        {
+          "name": "AulaPassadoIntent",
+          "slots": [
+            {
+              "name": "diaSemanaPassado",
+              "type": "AMAZON.DayOfWeek"
+            }
+          ],
+          "samples": [
+            "{diaSemanaPassado} quais aulas tive ",
+            "{diaSemanaPassado} que aulas tive ",
+            "{diaSemanaPassado} que aula tive ",
+            "{diaSemanaPassado} que aluas eu tive",
+            "{diaSemanaPassado} quais aulas eu tive ",
+            "{diaSemanaPassado} que aulas eu tive ",
+            "{diaSemanaPassado} tive aulas de que ",
+            "{diaSemanaPassado} tive que aulas ",
+            "{diaSemanaPassado} tive quais aulas ",
+            "{diaSemanaPassado} tive que aula",
+            "{diaSemanaPassado} tive aula de que",
+            "Quais aulas tive {diaSemanaPassado} passado ",
+            "Que aula tive {diaSemanaPassado} passado",
+            "Que aulas tive {diaSemanaPassado} passado",
+            "Quasi aulas tive {diaSemanaPassado} passada ",
+            "Que aulas tive {diaSemanaPassado} passada",
+            "Aulas de {diaSemanaPassado} passada",
+            "Aula que tive no {diaSemanaPassado}",
+            "Aulas que tive no {diaSemanaPassado}",
+            "Aulas que tive {diaSemanaPassado}",
+            "Aula que tive {diaSemanaPassado}",
+            "Quais aulas tive no {diaSemanaPassado} ",
+            "Quais aulas tive {diaSemanaPassado}",
+            "Que aula tive no {diaSemanaPassado}",
+            "Que aulas tive {diaSemanaPassado}",
+            "Que aulas tive na {diaSemanaPassado}",
+            "Que aula tive {diaSemanaPassado}"
+          ]
         }
       ],
       "types": []
     }
   },
-  "version": "14"
+  "version": "28"
 }

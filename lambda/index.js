@@ -7,7 +7,9 @@ const Alexa = require('ask-sdk-core');
 
 const tela = require('./tela.js');
 
+const telaNotas = require('./telaNotas.js');
 
+const telaCoordenacao = require('./telaCoordenacao');
 
 const LaunchRequestHandler = {
 
@@ -34,7 +36,7 @@ const NotasIntentHandler = {
     },
     handle(handlerInput) {
         const speakOutput = `Você tirou 9.3 na AC, e 9.1 na AI. totalizando assim 9.2 na sua média semestral.`;
-        
+        telaNotas.telaNotas(handlerInput);
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
@@ -147,14 +149,17 @@ const AulaPassadoIntentHandler = {
        switch (parDiaDaSemanaPassado){
             case 'ontem':
                 speakOutput = 'ontem, você teve aula de álgebra linear';
+                tela.telaUni(handlerInput);
             break;  
             case 'hoje':
                 speakOutput = 'hoje, você teve aula de álgebra linear';
+                tela.telaUni(handlerInput);
             break;
         
             case '2.ª feira':
             case '2ª': 
                 speakOutput = 'você teve aula de estatística e de probabilidade';
+                tela.telaUni(handlerInput);
             break;
             
             case 'terça':
@@ -162,29 +167,35 @@ const AulaPassadoIntentHandler = {
             case '3.ª feira':
             case '3ª':
                 speakOutput = 'você teve aula de gestão de projetos';
+                tela.telaUni(handlerInput);
             break;
             
             case '4.ª feira':
             case '4ª':
                 speakOutput = 'você teve aula de orientação a ojetos';
+                tela.telaUni(handlerInput);
             break;
 
             case '5.ª feira':
             case '5ª':
                 speakOutput = 'Você teve aula de ética';
+                tela.telaUni(handlerInput);
             break;
             
             case '6ª':
             case '6.ª feira':
             case '6.ª':
                 speakOutput = 'você teve aula de filosofia';
+                tela.telaUni(handlerInput);
             break;
             
             case 'sábado': 
                 speakOutput = 'você teve aula de geografia e de história';
+                tela.telaUni(handlerInput);
             break;
             case 'domingo': 
                 speakOutput = 'Você não teve aula neste dia';
+                tela.telaUni(handlerInput);
             break;
         }
         
@@ -203,6 +214,7 @@ const HorarioCoordenadorIntentHandler = {
     },
     handle(handlerInput) {
         const speakOutput = 'Seu coordenador está disponível de segunda a quinta, a partir das 15:00 horas na unidade Maracanã';
+        telaCoordenacao.telaCoordenacao(handlerInput);
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt()

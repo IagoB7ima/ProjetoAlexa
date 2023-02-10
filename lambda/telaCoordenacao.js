@@ -1,12 +1,11 @@
-
 const Alexa = require("ask-sdk-core");
 
-const DOCUMENT_ID = "UnisuamAula";
+const DOCUMENT_ID = "UnisuamCoordenacao";
 
 const datasource = {
-    "textListData": {
+    "detailImageRightData": {
         "type": "object",
-        "objectId": "textListSample",
+        "objectId": "detailImageRightSample",
         "backgroundImage": {
             "contentDescription": null,
             "smallSourceUrl": null,
@@ -18,49 +17,33 @@ const datasource = {
                 }
             ]
         },
-        "title": "Calendário do dia",
-        "listItems": [
-            {
-                "primaryText": "Aula: ${Api.aula}",
-                "primaryAction": [
-                    {
-                        "value": "${payload.textListData.listItems[0].primaryText}"
-                    }
-                ]
+        "title": "Coordenação",
+        "subtitle": "",
+        "image": {
+            "contentDescription": "",
+            "smallSourceUrl": null,
+            "largeSourceUrl": null,
+            "sources": [
+                {
+                    "url": "https://br.web.img3.acsta.net/c_310_420/pictures/18/06/29/00/35/0101925.jpg",
+                    "size": "large"
+                }
+            ]
+        },
+        "textContent": {
+            "primaryText": {
+                "type": "PlainText",
+                "text": "Tony Stark"
             },
-            {
-                "primaryText": "Professor: ${Api.professor}",
-                "primaryAction": [
-                    {
-                        "value": "${payload.textListData.listItems[1].primaryText}"
-                    }
-                ]
+            "locationText": {
+                "type": "PlainText",
+                "text": "COORDENADOR TI - UNISUAM  / CONTATOS: (21) 9 9999-9999  tonyStark@unisuam.edu.br"
             },
-            {
-                "primaryText": "Hora e Data:${Api.horaData}",
-                "primaryAction": [
-                    {
-                        "value": "${payload.textListData.listItems[2].primaryText}"
-                    }
-                ]
-            },
-            {
-                "primaryText": "Sala: ${Api.sala}",
-                "primaryAction": [
-                    {
-                        "value": "${payload.textListData.listItems[3].primaryText}"
-                    }
-                ]
-            },
-            {
-                "primaryText": "Unidade:${Api.unidade}",
-                "primaryAction": [
-                    {
-                        "value": "${payload.textListData.listItems[5].primaryText}"
-                    }
-                ]
+            "secondaryText": {
+                "type": "PlainText",
+                "text": "Disponibilidade: segunda a sexta, das 14:30h às 18:30h"
             }
-        ],
+        },
         "logoUrl": "https://seeklogo.com/images/U/unisuam-logo-F9DC14A346-seeklogo.com.png"
     }
 };
@@ -76,13 +59,14 @@ const createDirectivePayload = (aplDocumentId, dataSources = {}, tokenId = "docu
         datasources: dataSources
     }
 };
+
 /*const SampleAPLRequestHandler = {
     canHandle(handlerInput) {
         // handle named intent
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'INTENT_NAME';
     },*/
-    exports.telaUni = function(handlerInput) {
+    exports.telaCoordenacao = function(handlerInput) {
         if (Alexa.getSupportedInterfaces(handlerInput.requestEnvelope)['Alexa.Presentation.APL']) {
             // generate the APL RenderDocument directive that will be returned from your skill
             const aplDirective = createDirectivePayload(DOCUMENT_ID, datasource);
@@ -93,8 +77,6 @@ const createDirectivePayload = (aplDocumentId, dataSources = {}, tokenId = "docu
         // send out skill response
         //return handlerInput.responseBuilder.getResponse();
     }
-    
-    
 //};
 
 /*exports.handler = Alexa.SkillBuilders.custom()

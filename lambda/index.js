@@ -35,7 +35,7 @@ const NotasIntentHandler = {
         && Alexa.getIntentName(handlerInput.requestEnvelope) === 'NotasIntent';
     },
     handle(handlerInput) {
-        const speakOutput = `Você tirou 9.3 na AC, e 9.1 na AI. totalizando assim 9.2 na sua média semestral.`;
+        const speakOutput = `Você tirou 9.3 na AC, e 10 na AI. totalizando assim 9.2 na sua média semestral.`;
         telaNotas.telaNotas(handlerInput);
         return handlerInput.responseBuilder
             .speak(speakOutput)

@@ -121,7 +121,8 @@
           "examplePhrases": [
             "Alexa abra olá mundo",
             "olá",
-            "ajuda"
+            "ajuda",
+            "abra"
           ],
           "keywords": [],
           "name": "Universidade Lima",

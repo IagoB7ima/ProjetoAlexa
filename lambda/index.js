@@ -11,20 +11,33 @@ const telaNotas = require('./telaNotas.js');
 
 const telaCoordenacao = require('./telaCoordenacao');
 
+const telaAlexa = require('./unisuamAlexa.js');
+
+
 const LaunchRequestHandler = {
 
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest'
     },
-    
     handle(handlerInput) {
-        const speakOutput = 'Universidade Lima. compromisso para a vida toda. Você poderá acessar o seu calendário de aulas, o boletim de notas, horário do seu coordenador e mais. O que você gostaria?';
-        
-        return handlerInput.responseBuilder
-        .speak(speakOutput)
-        .reprompt(speakOutput)
-        .getResponse();
-    
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+         if (sessionAttributes['mensagem-exibida']) {
+            // A mensagem já foi exibida antes, retorna uma resposta sem a mensagem
+            return handlerInput.responseBuilder
+            .speak('Bem-vindo de volta, em que posso ajudá lo!.')
+            .getResponse();
+        }else{
+            // A mensagem ainda não foi exibida, define o atributo de sessão como verdadeiro e exibe a mensagem
+            sessionAttributes['mensagem-exibida'] = true;
+            handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
+            const speakOutput = 'Centro Universitário Augusto Motta. compromisso para a vida toda. Você poderá acessar o seu calendário de aulas, o boletim de notas, horário do seu coordenador e mais. O que você gostaria?';
+            telaAlexa.telaAlexa(handlerInput);
+            return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt(speakOutput)
+            .getResponse();
+            
+        }
     }
 };
 
@@ -35,7 +48,7 @@ const NotasIntentHandler = {
         && Alexa.getIntentName(handlerInput.requestEnvelope) === 'NotasIntent';
     },
     handle(handlerInput) {
-        const speakOutput = `Você tirou 9.3 na AC, e 10 na AI. totalizando assim 9.2 na sua média semestral.`;
+        const speakOutput = `Você tirou 9.3 na AC, e 9.1 na AI. totalizando assim 9.2 na sua média semestral.`;
         telaNotas.telaNotas(handlerInput);
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -66,19 +79,19 @@ const AulaIntentHandler = {
        switch (parDiaDaSemana){
             
             case 'hoje': 
-                speakOutput = 'Hoje, é aula de álgebra linear';
+                speakOutput = 'Hoje, você terá aula de álgebra linear';
                 tela.telaUni(handlerInput);
                 
             break;
             
             case 'amanhã': 
-                speakOutput = 'amanhã, será aula de matrizes e de vetores';
+                speakOutput = 'amanhã, você terá aula de matrizes e de vetores';
                 tela.telaUni(handlerInput);
             break;
         
             case '2.ª feira':
             case '2ª': 
-                speakOutput = 'você tem aula de estatística e de probabilidade';
+                speakOutput = 'você terá aula de estatística e de probabilidade';
                 tela.telaUni(handlerInput);
             break;
             
@@ -86,31 +99,31 @@ const AulaIntentHandler = {
             case 'terça-feira':
             case '3.ª feira':
             case '3ª':
-                speakOutput = 'você tem aula de gestão de projetos';
+                speakOutput = 'você terá aula de gestão de projetos';
                 tela.telaUni(handlerInput);
             break;
             
             case '4.ª feira':
             case '4ª':
-                speakOutput = 'você tem aula de orientação a ojetos';
+                speakOutput = 'você terá aula de orientação a ojetos';
                 tela.telaUni(handlerInput);
             break;
 
             case '5.ª feira':
             case '5ª':
-                speakOutput = 'Você tem aula de ética';
+                speakOutput = 'Você terá aula de ética';
                 tela.telaUni(handlerInput);
             break;
             
             case '6ª':
             case '6.ª feira':
             case '6.ª':
-                speakOutput = 'você tem aula de filosofia';
+                speakOutput = 'você terá aula de filosofia';
                 tela.telaUni(handlerInput);
             break;
             
             case 'sábado': 
-                speakOutput = 'você tem aula de geografia e de história';
+                speakOutput = 'você terá aula de geografia e de história';
                 tela.telaUni(handlerInput);
             break;
             case 'domingo': 
@@ -121,7 +134,7 @@ const AulaIntentHandler = {
         
     return handlerInput.responseBuilder
         .speak(speakOutput)
-        .reprompt()
+        .reprompt(speakOutput)
         .getResponse();
 
   }
@@ -201,7 +214,7 @@ const AulaPassadoIntentHandler = {
         
     return handlerInput.responseBuilder
         .speak(speakOutput)
-        .reprompt()
+        .reprompt(speakOutput)
         .getResponse();
 
   }
@@ -213,15 +226,15 @@ const HorarioCoordenadorIntentHandler = {
         && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HorarioCoordenadorIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'Seu coordenador está disponível de segunda a quinta, a partir das 15:00 horas na unidade Maracanã';
+
+        const speakOutput = 'Seu coordenador está disponível de segunda a sexta, a partir das 14:30 até às 18:30 na unidade de Bonsucesso';
         telaCoordenacao.telaCoordenacao(handlerInput);
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            .reprompt()
+            .reprompt(speakOutput)
             .getResponse();
     }
 };
-
 
 const HelloWorldIntentHandler = {
     canHandle(handlerInput) {
@@ -233,7 +246,7 @@ const HelloWorldIntentHandler = {
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            .reprompt(speakOutput)
+            //.reprompt(speakOutput)
             .getResponse();
     }
 };
@@ -260,7 +273,7 @@ const CancelAndStopIntentHandler = {
                 || Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.StopIntent');
     },
     handle(handlerInput) {
-        const speakOutput = 'Goodbye!';
+        const speakOutput = 'Adeus, espero ter te ajudado!';
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -278,7 +291,7 @@ const FallbackIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.FallbackIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'Sorry, I don\'t know about that. Please try again.';
+        const speakOutput = 'Desculpe não entendi, pode repetir!';
 
         return handlerInput.responseBuilder
             .speak(speakOutput)

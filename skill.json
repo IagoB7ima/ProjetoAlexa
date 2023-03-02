@@ -92,6 +92,7 @@
             "type": "ALEXA_PRESENTATION_APL"
           }
         ],
+        "locales": {},
         "regions": {
           "NA": {
             "endpoint": {
@@ -121,8 +122,7 @@
           "examplePhrases": [
             "Alexa abra olá mundo",
             "olá",
-            "ajuda",
-            "abra"
+            "ajuda"
           ],
           "keywords": [],
           "name": "Universidade Lima",

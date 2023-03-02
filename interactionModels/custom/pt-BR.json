@@ -1,11 +1,13 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "universidade lima",
+      "invocationName": "universidade",
       "intents": [
         {
           "name": "AMAZON.CancelIntent",
-          "samples": []
+          "samples": [
+            "valeu alexa"
+          ]
         },
         {
           "name": "AMAZON.HelpIntent",
@@ -13,7 +15,12 @@
         },
         {
           "name": "AMAZON.StopIntent",
-          "samples": []
+          "samples": [
+            "é só isso alexa",
+            "é só isso ",
+            "tchal alexa",
+            "obrigado alexa "
+          ]
         },
         {
           "name": "HelloWorldIntent",
@@ -25,7 +32,6 @@
             "diga oi",
             "oi",
             "diga olá mundo",
-            "como você está",
             "diga olá"
           ]
         },
@@ -73,6 +79,9 @@
           "name": "HorarioCoordenadorIntent",
           "slots": [],
           "samples": [
+            "qual agendo da cooordenadora",
+            "qual agendo da cooordenador",
+            "qual agendo do cooordenador ",
             "qual agenda coordenador ",
             "qual agenda coordenadora ",
             "qual agenda coordenação ",
@@ -230,10 +239,14 @@
             "Que aulas tive na {diaSemanaPassado}",
             "Que aula tive {diaSemanaPassado}"
           ]
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
         }
       ],
       "types": []
     }
   },
-  "version": "34"
+  "version": "47"
 }

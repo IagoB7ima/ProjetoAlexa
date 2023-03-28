@@ -1,13 +1,11 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "universidade",
+      "invocationName": "universidade lima",
       "intents": [
         {
           "name": "AMAZON.CancelIntent",
-          "samples": [
-            "valeu alexa"
-          ]
+          "samples": []
         },
         {
           "name": "AMAZON.HelpIntent",
@@ -15,73 +13,98 @@
         },
         {
           "name": "AMAZON.StopIntent",
-          "samples": [
-            "é só isso alexa",
-            "é só isso ",
-            "tchal alexa",
-            "obrigado alexa "
-          ]
-        },
-        {
-          "name": "HelloWorldIntent",
-          "slots": [],
-          "samples": [
-            "olá",
-            "como vai você",
-            "diga oi mundo",
-            "diga oi",
-            "oi",
-            "diga olá mundo",
-            "diga olá"
-          ]
+          "samples": []
         },
         {
           "name": "AMAZON.NavigateHomeIntent",
           "samples": []
         },
         {
-          "name": "NotasIntent",
-          "slots": [],
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "AulaIntent",
+          "slots": [
+            {
+              "name": "diaSemana",
+              "type": "AMAZON.DayOfWeek"
+            }
+          ],
           "samples": [
-            "qual é a minha nota semestral",
-            "qual é a minha nota ",
-            "as minhas notas semestrais",
-            "a minha nota semestral ",
-            "as notas semestrais ",
-            "a nota semestral ",
-            "as minhas notas",
-            "a minha nota ",
-            "quais são as minhas notas semestrais ",
-            "quais as minhas notas semestrais",
-            "qual a minha nota semestral ",
-            "qual é minha nota semestral",
-            "quais são minhas notas semestrais ",
-            "quais são as minhas notas ",
-            "quais as minhas notas ",
-            "qual a minha nota ",
-            "qual é minha nota ",
-            "quais são minhas notas ",
-            "notas do semestre",
-            "nota do semestre ",
-            "notas semestrais ",
-            "nota semestral",
-            "minhas notas semestrais",
-            "minha nota semestral",
-            "minha nota ",
-            "minhas notas",
-            "boletim de notas",
-            "boletim",
-            "nota",
-            "notas"
+            "qual aula terei na {diaSemana}",
+            "aulas que terei na {diaSemana}",
+            "aula que terei na {diaSemana}",
+            "quais aulas terei na {diaSemana}",
+            "aulas de {diaSemana}",
+            "quais aulas são {diaSemana}",
+            "aula {diaSemana}",
+            "aula de {diaSemana}",
+            "aulas {diaSemana}",
+            "que aula tenho {diaSemana}",
+            "quais aulas tenho {diaSemana}",
+            "que aula tenho na proxima {diaSemana}",
+            "que aula tenho no proximo {diaSemana}",
+            "quais aulas tenho na proxima {diaSemana}",
+            "quais aulas tenho no próximo {diaSemana}",
+            "que aula tenho na {diaSemana}",
+            "que aula terei no {diaSemana}",
+            "aula que tenho {diaSemana}",
+            "aulas que tenho {diaSemana}",
+            "aulas que terei {diaSemana}",
+            "aula que terei {diaSemana}",
+            "qual aula terei no {diaSemana}",
+            "qual aula terei {diaSemana}",
+            "quais aulas terei no {diaSemana}",
+            "aula que terei no {diaSemana}",
+            "aulas que terei no {diaSemana}"
+          ]
+        },
+        {
+          "name": "AulaPassadoIntent",
+          "slots": [
+            {
+              "name": "diaSemanaPas",
+              "type": "AMAZON.DayOfWeek"
+            }
+          ],
+          "samples": [
+            "que aula eu tive {diaSemanaPas}",
+            "que aulas eu tive {diaSemanaPas}",
+            "quais aulas eu tive {diaSemanaPas}",
+            "que aula tive {diaSemanaPas}",
+            "que aulas tive na {diaSemanaPas}",
+            "que aulas tive {diaSemanaPas}",
+            "que aula tive no {diaSemanaPas}",
+            "quais aulas tive {diaSemanaPas}",
+            "quais aulas tive no {diaSemanaPas}",
+            "aula que tive {diaSemanaPas}",
+            "quais aulas que tive {diaSemanaPas}",
+            "aulas que tive no {diaSemanaPas}",
+            "aula  que tive no {diaSemanaPas}",
+            "aula que eu tive na {diaSemanaPas} passada",
+            "aula que tive no {diaSemanaPas} passado",
+            "que aulas tive {diaSemanaPas} passada",
+            "quais aulas tive {diaSemanaPas} passada ",
+            "que aulas tive {diaSemanaPas} passado",
+            "que aula tive {diaSemanaPas} passado",
+            "quais aulas tive {diaSemanaPas} passado",
+            "{diaSemanaPas} tive aula de que ",
+            "{diaSemanaPas} tive que aula ",
+            "{diaSemanaPas} tive quais aulas ",
+            "{diaSemanaPas} tive que aulas ",
+            "{diaSemanaPas} tive aulas de que ",
+            "{diaSemanaPas} quais aulas eu tive ",
+            "{diaSemanaPas} que aulas eu tive",
+            "{diaSemanaPas} que aula tive ",
+            "{diaSemanaPas} que aulas tive ",
+            "{diaSemanaPas} quais aulas tive "
           ]
         },
         {
           "name": "HorarioCoordenadorIntent",
           "slots": [],
           "samples": [
-            "qual agendo da cooordenadora",
-            "qual agendo da cooordenador",
-            "qual agendo do cooordenador ",
             "qual agenda coordenador ",
             "qual agenda coordenadora ",
             "qual agenda coordenação ",
@@ -147,106 +170,70 @@
           ]
         },
         {
-          "name": "MatriculaIntent",
-          "slots": [
-            {
-              "name": "Matricula",
-              "type": "AMAZON.SearchQuery"
-            }
-          ],
+          "name": "PosGraduacaoIntent",
+          "slots": [],
           "samples": [
-            "matrícula {Matricula}"
+            "cursos de pós da unisuam",
+            "os cursos de pós da unisuam",
+            "Quais os cursos de pós da unisuam",
+            "Quais são os cursos de pós da unisuam",
+            "cursos de pós da universidade unisuam",
+            "os cursos de pós da universidade unisuam",
+            "Quais os cursos de pós da universidade unisuam",
+            "Quais são os cursos de pós da universidade unisuam",
+            "cursos de pós graduação da unisuam",
+            "os cursos de pós graduação da unisuam",
+            "Quais os cursos de pós graduação da unisuam",
+            "Quais são os cursos de pós graduação da unisuam",
+            "cursos de pós graduação da universidade unisuam",
+            " os cursos de pós graduação da universidade unisuam",
+            "Quais os cursos de pós graduação da universidade unisuam",
+            "Quais são os cursos de pós graduação da universidade unisuam "
           ]
         },
         {
-          "name": "AulaIntent",
-          "slots": [
-            {
-              "name": "diaSemana",
-              "type": "AMAZON.DayOfWeek"
-            }
-          ],
+          "name": "MestradoIntent",
+          "slots": [],
           "samples": [
-            "Aulas que terei no {diaSemana}",
-            "Aula que terei no {diaSemana}",
-            "Quais aulas terei no {diaSemana}",
-            "Qual aula terei {diaSemana}",
-            "Aula que terei {diaSemana}",
-            "Aulas que terei {diaSemana}",
-            "Aulas que tenho {diaSemana}",
-            "Aula que tenho {diaSemana}",
-            "Que aula terei no {diaSemana}",
-            "Que aula terei {diaSemana}",
-            "Quais aulas terei {diaSemana}",
-            "Qual aula terei no {diaSemana}",
-            "Qual aula tenho no {diaSemana}",
-            "Que aula tenho no {diaSemana}",
-            "Quais aulas tenho no {diaSemana}",
-            "Quais aulas tenho na {diaSemana}",
-            "Que aulas tenho na {diaSemana} ",
-            "Que aula tenho na {diaSemana}",
-            "Quais aulas tenho no próximo {diaSemana}",
-            "Quais aulas tenho na próxima {diaSemana}",
-            "Que aula tenho no  próximo {diaSemana}",
-            "Que aula tenho na próxima {diaSemana}",
-            "Quais aulas tenho {diaSemana}",
-            "Que aula tenho {diaSemana}",
-            "Qual a aula da {diaSemana}",
-            "Quais as aulas da próxia {diaSemana}",
-            "Quais as aulas de {diaSemana}",
-            "Qual a aula de {diaSemana}",
-            "Aulas {diaSemana}",
-            "Aula de {diaSemana}",
-            "Aula {diaSemana}",
-            "Quais são as aulas de {diaSemana} ",
-            " Aulas de {diaSemana}"
+            "cursos de mestrado da unisuam",
+            "os cursos de mestrado da unisuam",
+            "Quais os cursos de mestrado da unisuam",
+            "Quais são os cursos de mestrado da unisuam",
+            "cursos de mestrado da universidade unisuam",
+            " os cursos de mestrado da universidade unisuam",
+            "Quais os cursos de mestrado da universidade unisuam",
+            "Quais são os cursos de mestrado da universidade unisuam "
           ]
         },
         {
-          "name": "AulaPassadoIntent",
-          "slots": [
-            {
-              "name": "diaSemanaPassado",
-              "type": "AMAZON.DayOfWeek"
-            }
-          ],
+          "name": "InscricaoIntent",
+          "slots": [],
           "samples": [
-            "{diaSemanaPassado} quais aulas tive ",
-            "{diaSemanaPassado} que aulas tive ",
-            "{diaSemanaPassado} que aula tive ",
-            "{diaSemanaPassado} que aluas eu tive",
-            "{diaSemanaPassado} quais aulas eu tive ",
-            "{diaSemanaPassado} que aulas eu tive ",
-            "{diaSemanaPassado} tive aulas de que ",
-            "{diaSemanaPassado} tive que aulas ",
-            "{diaSemanaPassado} tive quais aulas ",
-            "{diaSemanaPassado} tive que aula",
-            "{diaSemanaPassado} tive aula de que",
-            "Quais aulas tive {diaSemanaPassado} passado ",
-            "Que aula tive {diaSemanaPassado} passado",
-            "Que aulas tive {diaSemanaPassado} passado",
-            "Quasi aulas tive {diaSemanaPassado} passada ",
-            "Que aulas tive {diaSemanaPassado} passada",
-            "Aulas de {diaSemanaPassado} passada",
-            "Aula que tive no {diaSemanaPassado}",
-            "Aulas que tive no {diaSemanaPassado}",
-            "Aulas que tive {diaSemanaPassado}",
-            "Aula que tive {diaSemanaPassado}",
-            "Quais aulas tive no {diaSemanaPassado} ",
-            "Quais aulas tive {diaSemanaPassado}",
-            "Que aula tive no {diaSemanaPassado}",
-            "Que aulas tive {diaSemanaPassado}",
-            "Que aulas tive na {diaSemanaPassado}",
-            "Que aula tive {diaSemanaPassado}"
+            "como eu entro na unisuam ",
+            "como eu me inscrevo na unisuam ",
+            "como eu entro na universidade unisuam ",
+            "como eu me inscrevo na universidade unisuam "
           ]
         },
         {
-          "name": "AMAZON.FallbackIntent",
-          "samples": []
+          "name": "notasMateriasIntent",
+          "slots": [
+            {
+              "name": "materia",
+              "type": "AMAZON.FictionalCharacter"
+            },
+            {
+              "name": "curso",
+              "type": "AMAZON.FictionalCharacter"
+            }
+          ],
+          "samples": [
+            "qual a minha nota da matéria de {materia} do curso de {curso}"
+          ]
         }
       ],
       "types": []
     }
   },
-  "version": "47"
+  "version": "10"
 }

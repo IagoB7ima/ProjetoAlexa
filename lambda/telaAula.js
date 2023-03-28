@@ -1,7 +1,6 @@
-
 const Alexa = require("ask-sdk-core");
 
-const DOCUMENT_ID = "UnisuamAula";
+const DOCUMENT_ID = "telaAula";
 
 const datasource = {
     "textListData": {
@@ -13,12 +12,12 @@ const datasource = {
             "largeSourceUrl": null,
             "sources": [
                 {
-                    "url": "https://www.unisuam.edu.br/wp-content/uploads/2020/07/outras_unidades_polos_Bonsucesso.jpg",
+                    "url": "https://d2o906d8ln7ui1.cloudfront.net/images/templates_v3/textlist/AlexaTextListBackground_Dark.png",
                     "size": "large"
                 }
             ]
         },
-        "title": "Calendário do dia",
+        "title": "Aula do dia",
         "listItems": [
             {
                 "primaryText": "Aula: ${Api.aula}",
@@ -61,7 +60,7 @@ const datasource = {
                 ]
             }
         ],
-        "logoUrl": "https://seeklogo.com/images/U/unisuam-logo-F9DC14A346-seeklogo.com.png"
+        "logoUrl": "https://d2o906d8ln7ui1.cloudfront.net/images/templates_v3/logo/logo-modern-botanical-white.png"
     }
 };
 
@@ -76,27 +75,14 @@ const createDirectivePayload = (aplDocumentId, dataSources = {}, tokenId = "docu
         datasources: dataSources
     }
 };
-/*const SampleAPLRequestHandler = {
-    canHandle(handlerInput) {
-        // handle named intent
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'INTENT_NAME';
-    },*/
-    exports.telaUni = function(handlerInput) {
+
+exports.ExibirTelaAula = function(handlerInput) {
         if (Alexa.getSupportedInterfaces(handlerInput.requestEnvelope)['Alexa.Presentation.APL']) {
             // generate the APL RenderDocument directive that will be returned from your skill
             const aplDirective = createDirectivePayload(DOCUMENT_ID, datasource);
             // add the RenderDocument directive to the responseBuilder
             handlerInput.responseBuilder.addDirective(aplDirective);
         }
+};
 
-        // send out skill response
-        //return handlerInput.responseBuilder.getResponse();
-    }
-    
-    
-//};
 
-/*exports.handler = Alexa.SkillBuilders.custom()
-    .addRequestHandlers(SampleAPLRequestHandler)
-    .lambda();*/

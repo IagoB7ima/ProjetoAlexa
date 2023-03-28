@@ -1,25 +1,38 @@
 const Alexa = require("ask-sdk-core");
 
-const DOCUMENT_ID = "UnisuamNotas";
+const DOCUMENT_ID = "telaNotas";
 
+const fs = require('fs');
+const data = fs.readFileSync('./dados.json');
+const usuarios = JSON.parse(data).usuarios;
+
+const filtrarUsuario = require('./filterUser.js');
+
+function exibirTelaNota(handlerInput){
+
+const notas = filtrarUsuario(usuarios, handlerInput);
+    
 const datasource = {
-    "multipleChoiceTemplateData": {
-        "type": "object",
-        "properties": {
-            "backgroundImage": "https://www.unisuam.edu.br/wp-content/uploads/2020/07/outras_unidades_polos_Bonsucesso.jpg",
-            "titleText": "Suas notas deste semestre",
-            "primaryText": "",
-            "choices": [
-                "AC:",
-                "AI:",
-                "Média:"
+    
+    multipleChoiceTemplateData: {
+        type: "object",
+        properties: {
+            backgroundImage: "https://img.freepik.com/vetores-gratis/fundo-de-gradiente-de-linhas-azuis-dinamicas_23-2148995756.jpg",
+            titleText: `${notas.nome}`,
+            choices: [
+                `A1: ${notas.notas.a1}`,
+                `A2: ${notas.notas.a2}`, 
+                `A3: ${notas.notas.a3}`,
+                `Média: ${notas.notas.media}`
             ],
-            "choiceListType": "alphabet",
-            "headerAttributionImage": "https://seeklogo.com/images/U/unisuam-logo-F9DC14A346-seeklogo.com.png",
-            "footerHintText": ""
+            choiceListType: "number",
+            headerAttributionImage: "https://seeklogo.com/images/U/unisuam-logo-F9DC14A346-seeklogo.com.png",
+            footerHintText: "Universidade UNISUAM, Compromisso para a vida toda!"
         }
     }
 };
+
+
 
 const createDirectivePayload = (aplDocumentId, dataSources = {}, tokenId = "documentToken") => {
     return {
@@ -33,13 +46,6 @@ const createDirectivePayload = (aplDocumentId, dataSources = {}, tokenId = "docu
     }
 };
 
-/*const SampleAPLRequestHandler = {
-    canHandle(handlerInput) {
-        // handle named intent
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'INTENT_NAME';
-    },*/
-    exports.telaNotas = function(handlerInput) {
         if (Alexa.getSupportedInterfaces(handlerInput.requestEnvelope)['Alexa.Presentation.APL']) {
             // generate the APL RenderDocument directive that will be returned from your skill
             const aplDirective = createDirectivePayload(DOCUMENT_ID, datasource);
@@ -47,11 +53,8 @@ const createDirectivePayload = (aplDocumentId, dataSources = {}, tokenId = "docu
             handlerInput.responseBuilder.addDirective(aplDirective);
         }
 
-        // send out skill response
-        //return handlerInput.responseBuilder.getResponse();
-    }
-//};
+}
 
-/*exports.handler = Alexa.SkillBuilders.custom()
-    .addRequestHandlers(SampleAPLRequestHandler)
-    .lambda();*/
+module.exports = exibirTelaNota;
+
+

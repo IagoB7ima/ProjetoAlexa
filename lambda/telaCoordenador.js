@@ -1,6 +1,6 @@
 const Alexa = require("ask-sdk-core");
 
-const DOCUMENT_ID = "UnisuamCoordenacao";
+const DOCUMENT_ID = "telaCoordenador";
 
 const datasource = {
     "detailImageRightData": {
@@ -12,12 +12,12 @@ const datasource = {
             "largeSourceUrl": null,
             "sources": [
                 {
-                    "url": "https://www.unisuam.edu.br/wp-content/uploads/2020/07/outras_unidades_polos_Bonsucesso.jpg",
+                    "url": "https://img.freepik.com/vetores-gratis/fundo-de-gradiente-de-linhas-azuis-dinamicas_23-2148995756.jpg",
                     "size": "large"
                 }
             ]
         },
-        "title": "Coordenação",
+        "title": "Horários  do Coordenador",
         "subtitle": "",
         "image": {
             "contentDescription": "",
@@ -25,7 +25,7 @@ const datasource = {
             "largeSourceUrl": null,
             "sources": [
                 {
-                    "url": "https://br.web.img3.acsta.net/c_310_420/pictures/18/06/29/00/35/0101925.jpg",
+                    "url": "https://f.i.uol.com.br/fotografia/2022/06/15/165531966362aa2c6f3f705_1655319663_3x2_md.jpg",
                     "size": "large"
                 }
             ]
@@ -33,17 +33,28 @@ const datasource = {
         "textContent": {
             "primaryText": {
                 "type": "PlainText",
-                "text": "Tony Stark"
+                "text": "Tony Ramos"
+            },
+            "rating": {
+                "text": ""
             },
             "locationText": {
                 "type": "PlainText",
-                "text": "COORDENADOR TI - UNISUAM  / CONTATOS: (21) 9 9999-9999  tonyStark@unisuam.edu.br"
+                "text": "Disponibilidade: Segunda, Sexta, das 14:30 às 18:30."
             },
             "secondaryText": {
                 "type": "PlainText",
-                "text": "Disponibilidade: segunda a sexta, das 14:30h às 18:30h"
+                "text": "e-mail: tony@deFerro.com.br                               "
             }
         },
+        "buttons": [
+            {
+                "text": ""
+            },
+            {
+                "text": ""
+            }
+        ],
         "logoUrl": "https://seeklogo.com/images/U/unisuam-logo-F9DC14A346-seeklogo.com.png"
     }
 };
@@ -60,25 +71,12 @@ const createDirectivePayload = (aplDocumentId, dataSources = {}, tokenId = "docu
     }
 };
 
-/*const SampleAPLRequestHandler = {
-    canHandle(handlerInput) {
-        // handle named intent
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'INTENT_NAME';
-    },*/
-    exports.telaCoordenacao = function(handlerInput) {
+exports.ExibirTelaCoordenador = function(handlerInput) {
         if (Alexa.getSupportedInterfaces(handlerInput.requestEnvelope)['Alexa.Presentation.APL']) {
             // generate the APL RenderDocument directive that will be returned from your skill
             const aplDirective = createDirectivePayload(DOCUMENT_ID, datasource);
             // add the RenderDocument directive to the responseBuilder
             handlerInput.responseBuilder.addDirective(aplDirective);
         }
+};
 
-        // send out skill response
-        //return handlerInput.responseBuilder.getResponse();
-    }
-//};
-
-/*exports.handler = Alexa.SkillBuilders.custom()
-    .addRequestHandlers(SampleAPLRequestHandler)
-    .lambda();*/

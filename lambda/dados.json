@@ -1,0 +1,75 @@
+{
+  "usuarios": [
+    {
+      "matricula": "12345",
+      "nome": "Maria Silva",
+      "data_nascimento": "1990-02-10",
+      "cursos": [
+        {
+          "nome": "engenharia de software",
+          "turno": "Manhã",
+          "materias": [
+            {
+              "nome": "programação um",
+              "horario": "08:00 - 10:00",
+              "dia_semana": "Segunda-feira",
+              "sala": "Sala 101",
+              "professor": "João da Silva",
+              "notas": {
+                "a1": 10.0,
+                "a2": 9.5,
+                "a3": 0.0,
+                "media": 10.0
+              }
+            },
+            {
+              "nome": "banco de dados",
+              "horario": "10:00 - 12:00",
+              "dia_semana": "Quarta-feira",
+              "sala": "Sala 102",
+              "professor": "Maria Santos",
+              "notas": {
+                "a1": 8.0,
+                "a2": 9.5,
+                "a3": 0.0,
+                "media": 9.0
+              }
+            }
+          ]
+        },
+        {
+          "nome": "administração de empresas",
+          "turno": "Noite",
+          "materias": [
+            {
+              "nome": "gestão de pessoas",
+              "horario": "19:00 - 21:00",
+              "dia_semana": "Terça-feira",
+              "sala": "Sala 201",
+              "professor": "Ana Souza",
+              "notas": {
+                "a1": 8.0,
+                "a2": 7.5,
+                "a3": 0.0,
+                "media": 6.0
+              }
+            },
+            {
+              "nome": "contabilidade",
+              "horario": "21:00 - 23:00",
+              "dia_semana": "Quinta-feira",
+              "sala": "Sala 202",
+              "professor": "Carlos Oliveira",
+              "notas": {
+                "a1": 0.0,
+                "a2": 9.5,
+                "a3": 6.0,
+                "media": 8.0
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

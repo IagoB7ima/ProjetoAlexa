@@ -6,7 +6,7 @@
 const Alexa = require('ask-sdk-core');
 const parTelaAula = require('./telaAula.js');
 const exibirTelaNota = require('./telaNotas.js');
-const parTelaCoordenador = require('./telaCoordenador.js');
+const exibirTelaCoordenador = require('./telaCoordenador.js');
 const parTelaHome = require ('./telaHome.js');
 const parTelaPosGraduacao = require ('./telaPosGraduacao.js');
 const parTelaMestrado = require ('./telaMestrado.js');
@@ -16,7 +16,8 @@ const fs = require('fs');
 const data = fs.readFileSync('./dados.json');
 const usuarios = JSON.parse(data).usuarios;
 
-const filtrarUsuario = require('./filterUser.js');
+const filtrarNotas = require('./filterNotas.js');
+const filtrarCurso = require('./filterUser.js');
 
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
@@ -42,7 +43,7 @@ const AulaIntentHandler = {
     },
     handle(handlerInput) {
         
-        const parDiaSemana =handlerInput.requestEnvelope.request.intent.slots.diaSemana.value;
+        const parDiaSemana = handlerInput.requestEnvelope.request.intent.slots.diaSemana.value;
         let speakOutput = 'não entendi. pode repitir?';
        
         switch(parDiaSemana){
@@ -104,7 +105,7 @@ const AulaPassadoIntentHandler = {
     
     handle(handlerInput) {
        
-        const parDiaSemana =handlerInput.requestEnvelope.request.intent.slots.diaSemanaPas.value;
+        const parDiaSemana = handlerInput.requestEnvelope.request.intent.slots.diaSemanaPas.value;
         let speakOutput = 'não entendi. pode repitir?';
        
         switch(parDiaSemana){
@@ -164,8 +165,10 @@ const HorarioCoordenadorIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HorarioCoordenadorIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'Seu coordenador está disponível segunda e sexta, das 14:30 às 18:30 horas na unidade Maracanã';
-        parTelaCoordenador.ExibirTelaCoordenador(handlerInput);
+        const coordenador = filtrarCurso(usuarios, handlerInput);
+        
+        const speakOutput = `O coordenador ${coordenador.coordenador.nome} está disponível na unidade ${coordenador.coordenador.unidade} todas as segundas e sextas, das ${coordenador.coordenador.horario}.`;
+        exibirTelaCoordenador(handlerInput);
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -181,7 +184,7 @@ const PosGraduacaoIntentHandler = {
     },
     handle(handlerInput) {
         const speakOutput = 'A universidade fornece os seguintes cursos de Pós Graduação. Análises Clínicas e Patológicas, Engenharia Estrutural, Planejamento Tributário e Produção de Conteúdo Digital.';
-        parTelaPosGraduacao.ExibirTelaPosGraduacao(handlerInput);
+        exibirTelaCoordenador(handlerInput);
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -230,7 +233,7 @@ const notasMateriasIntentHandler = {
     
     handle(handlerInput) {
         
-        const notas = filtrarUsuario(usuarios, handlerInput);
+        const notas = filtrarNotas(usuarios, handlerInput);
         
         let speakOutput = `Suas notas são, na A1 nota ${notas.notas.a1}, na A2 nota ${notas.notas.a2}, na A3 nota ${notas.notas.a3} e sua média final é ${notas.notas.media}.`;
         exibirTelaNota(handlerInput);

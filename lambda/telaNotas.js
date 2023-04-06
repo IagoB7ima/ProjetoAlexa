@@ -6,11 +6,11 @@ const fs = require('fs');
 const data = fs.readFileSync('./dados.json');
 const usuarios = JSON.parse(data).usuarios;
 
-const filtrarUsuario = require('./filterUser.js');
+const filtrarNotas = require('./filterNotas.js');
 
 function exibirTelaNota(handlerInput){
 
-const notas = filtrarUsuario(usuarios, handlerInput);
+const notas = filtrarNotas(usuarios, handlerInput);
     
 const datasource = {
     

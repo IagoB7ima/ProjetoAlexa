@@ -103,70 +103,14 @@
         },
         {
           "name": "HorarioCoordenadorIntent",
-          "slots": [],
+          "slots": [
+            {
+              "name": "curso",
+              "type": "AMAZON.FictionalCharacter"
+            }
+          ],
           "samples": [
-            "qual agenda coordenador ",
-            "qual agenda coordenadora ",
-            "qual agenda coordenação ",
-            "qual a agenda da coordenação ",
-            "qual a agenda do coordendor ",
-            "quais horários da coordenadora ",
-            "quais são horários da coordenadora ",
-            "quais são os horários da coordenadora ",
-            "qual é os horários da coordenadora ",
-            "qual os horários da coordenadora ",
-            "qual é o horário da coordenadora",
-            "disponibilidade da coordenadação",
-            "coordenadora",
-            "horário da coordenadora ",
-            "horário coordenadora ",
-            "horários da coordenadora",
-            "horários coordenadora ",
-            "disponibilidade da coordenadora",
-            "disponibilidade coordenadora ",
-            "calendário do coordenador ",
-            "calendário da coordenadora ",
-            "calendário da coordenação ",
-            "agenda coordenadora",
-            "qual a agenda da coordeanção ",
-            "qual é a agenda da coordenação",
-            "calendário coordenação",
-            "calendário coordenadora ",
-            "calendário coordenador ",
-            "qual  é a agenda da coordenadora ",
-            "qual é a agenda do coordenador ",
-            "qual a agenda da coordenadora ",
-            "qual a agenda do coordenador ",
-            "quais os horários da coordenadora ",
-            "qual o horário da coordenadora",
-            "qual o calendário da coordenadora",
-            "qual o calendário do coordenador",
-            "agenda da coordenação",
-            "agenda coordenação ",
-            "qual é o horário da coordenação ",
-            "quais são os horários da coordenação",
-            "qual o horário  horário da coordenação ",
-            "quais os horários da coordenação ",
-            "qual é o horário do coordenador ",
-            "quais são os horários do coordenador ",
-            "qual o horário do coordenador ",
-            "quais os horários do coordenador ",
-            "disponibilidade coordenação",
-            "disponibilidade da coordenação ",
-            "horários cordenação",
-            "horários da coordenação",
-            "horário da coordenação",
-            "horário coordenação",
-            "coordenação",
-            "horários coordenador",
-            "horários do coordenador",
-            "disponibilidade coordenador",
-            "agenda coordenador ",
-            "agenda do coordenador",
-            "disponibilidade do coordenador",
-            "coordenador",
-            "horário do coordenador",
-            "horário coordenador"
+            "qual a agenda do coordenador do curso de {curso}"
           ]
         },
         {
@@ -235,5 +179,5 @@
       "types": []
     }
   },
-  "version": "10"
+  "version": "12"
 }

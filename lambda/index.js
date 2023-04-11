@@ -4,20 +4,23 @@
  * session persistence, api calls, and more.
  * */
 const Alexa = require('ask-sdk-core');
-const parTelaAula = require('./telaAula.js');
+const exibirTelaAula = require('./telaAula.js');
 const exibirTelaNota = require('./telaNotas.js');
 const exibirTelaCoordenador = require('./telaCoordenador.js');
-const parTelaHome = require ('./telaHome.js');
-const parTelaPosGraduacao = require ('./telaPosGraduacao.js');
-const parTelaMestrado = require ('./telaMestrado.js');
-const parTelaInscricao = require ('./telaInscricao.js');
+const parTelaHome = require('./telaHome.js');
+const parTelaPosGraduacao = require('./telaPosGraduacao.js');
+const parTelaMestrado = require('./telaMestrado.js');
+const parTelaInscricao = require('./telaInscricao.js');
+const filtrarNotas = require('./filterNotas.js');
+const filtrarCurso = require('./filterUser.js');
+const returnInfoAulas = require('./returnInfoAulas.js');
+const returnConsoleAula = require('./returnConsoleAula.js');
+const returnDiaSemana = require('./returnDiaSemana.js');
 
 const fs = require('fs');
 const data = fs.readFileSync('./dados.json');
-const usuarios = JSON.parse(data).usuarios;
-
-const filtrarNotas = require('./filterNotas.js');
-const filtrarCurso = require('./filterUser.js');
+const usuario = JSON.parse(data).usuarios;
+const aulas = JSON.parse(data);
 
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
@@ -25,7 +28,7 @@ const LaunchRequestHandler = {
     },
     handle(handlerInput) {
         
-        const speakOutput = "Universidade Augusto Mota. Compromisso para a vida toda. Aqui você poderá acessar o seu calendário de aulas, o boletim de notas, horário do seu coordenador e mais. O que você gostaria ?";
+        const speakOutput = "Universidade Lima. Compromisso para a vida toda. Aqui você poderá acessar o seu calendário de aulas, o boletim de notas, horário do seu coordenador e mais. O que você gostaria ?";
         parTelaHome.ExibirTelaHome(handlerInput);
         
         return handlerInput.responseBuilder
@@ -45,48 +48,96 @@ const AulaIntentHandler = {
         
         const parDiaSemana = handlerInput.requestEnvelope.request.intent.slots.diaSemana.value;
         let speakOutput = 'não entendi. pode repitir?';
-       
+        var diaSemanaDesejado;
+        var materiasComAulasNoDia;
+        var frase;
+        var dia;
+        var tempo = true; 
+        
         switch(parDiaSemana){
-            
+             
             case "hoje":
-                speakOutput = "Hoje você tem aula de Orientação a Objeto, das 18:30 às 22:10";
-                parTelaAula.ExibirTelaAula(handlerInput);
+                dia = "hoje";
+                diaSemanaDesejado = returnDiaSemana(dia);
+                materiasComAulasNoDia = returnInfoAulas(aulas, diaSemanaDesejado);
+                frase = returnConsoleAula(materiasComAulasNoDia, tempo);
+                
+                speakOutput = frase;
+                exibirTelaAula(handlerInput, materiasComAulasNoDia);
             break;
             
             case "amanhã":
-                speakOutput = "Amanhã você terá aula de arquitetura e infraestrutura em núvem";
-                parTelaAula.ExibirTelaAula(handlerInput);
+                dia = "amanhã";
+                diaSemanaDesejado = returnDiaSemana(dia);
+                materiasComAulasNoDia = returnInfoAulas(aulas, diaSemanaDesejado);
+                frase = returnConsoleAula(materiasComAulasNoDia, tempo);
+                
+                speakOutput = frase;
+                exibirTelaAula(handlerInput, materiasComAulasNoDia);
             break;
 
             case "2ª": case "2.ª": case"2.ª feira": case"segunda": case"segunda feira":
-                speakOutput = "Segunda você terá aula de matemática das 18 às 22 horas";
-                parTelaAula.ExibirTelaAula(handlerInput);
+                diaSemanaDesejado = 'segunda-feira';
+                materiasComAulasNoDia = returnInfoAulas(aulas, diaSemanaDesejado);
+                frase = returnConsoleAula(materiasComAulasNoDia, tempo);
+                
+                speakOutput = frase;
+                exibirTelaAula(handlerInput, materiasComAulasNoDia);
             break;
             
             case "3ª": case "3.ª": case "3.ª feira": case "terça": case "terça feira":
-                 speakOutput = "terça você terá aula de web design das 19 às 22 horas";
-                 parTelaAula.ExibirTelaAula(handlerInput);
+                diaSemanaDesejado = 'terça-feira';
+                materiasComAulasNoDia = returnInfoAulas(aulas, diaSemanaDesejado);
+                frase = returnConsoleAula(materiasComAulasNoDia, tempo);
+                
+                speakOutput = frase;
+                exibirTelaAula(handlerInput, materiasComAulasNoDia);
             break;
             
             case "4ª": case "4.ª": case "4.ª feira": case "quarta": case "quarta feira":
-                speakOutput = "quarta você terá aula de infraestrutura de rede das 17 ás 20 horas";
-                parTelaAula.ExibirTelaAula(handlerInput);
+                diaSemanaDesejado = 'quarta-feira';
+                materiasComAulasNoDia = returnInfoAulas(aulas, diaSemanaDesejado);
+                frase = returnConsoleAula(materiasComAulasNoDia, tempo);
+                
+                speakOutput = frase;
+                exibirTelaAula(handlerInput, materiasComAulasNoDia);
             break;
                 
             case "5ª": case "5.ª": case "5.ª feira": case "quinta": case "quinta feira":
-                speakOutput = "quinta você terá aula de excel das 18 às 20:30 horas";
-                parTelaAula.ExibirTelaAula(handlerInput);
+                diaSemanaDesejado = 'quinta-feira';
+                materiasComAulasNoDia = returnInfoAulas(aulas, diaSemanaDesejado);
+                frase = returnConsoleAula(materiasComAulasNoDia, tempo);
+                
+                speakOutput = frase;
+                exibirTelaAula(handlerInput, materiasComAulasNoDia);
             break;
                 
             case "6ª": case "6.ª": case "6.ª feira": case "sexta": case "sexta feira":
-                speakOutput="sexta você terá aula de lógica das 15 às 19 horas";
-                parTelaAula.ExibirTelaAula(handlerInput);
+                diaSemanaDesejado = 'sexta-feira';
+                materiasComAulasNoDia = returnInfoAulas(aulas, diaSemanaDesejado);
+                frase = returnConsoleAula(materiasComAulasNoDia);
+                
+                speakOutput = frase;
+                exibirTelaAula(handlerInput, materiasComAulasNoDia, tempo);
             break;
             
-            case "sábado": case "domingo":
-                speakOutput = "você não possue aulas marcadas neste dia";
-                parTelaAula.ExibirTelaAula(handlerInput);
-            break; 
+            case "sábado": 
+                diaSemanaDesejado = 'sábado';
+                materiasComAulasNoDia = returnInfoAulas(aulas, diaSemanaDesejado);
+                frase = returnConsoleAula(materiasComAulasNoDia, tempo);
+                
+                speakOutput = frase;
+                exibirTelaAula(handlerInput, materiasComAulasNoDia);
+            break;
+            
+            case "domingo":
+                diaSemanaDesejado = 'domingo';
+                materiasComAulasNoDia = returnInfoAulas(aulas, diaSemanaDesejado);
+                frase = returnConsoleAula(materiasComAulasNoDia, tempo);
+                
+                speakOutput = frase;
+                exibirTelaAula(handlerInput, materiasComAulasNoDia);
+            break;    
         }
         
 
@@ -107,48 +158,96 @@ const AulaPassadoIntentHandler = {
        
         const parDiaSemana = handlerInput.requestEnvelope.request.intent.slots.diaSemanaPas.value;
         let speakOutput = 'não entendi. pode repitir?';
-       
+        var diaSemanaDesejado;
+        var materiasComAulasNoDia;
+        var frase;
+        var dia;
+        var tempo = false;
+        
         switch(parDiaSemana){
-            
+        
             case "hoje":
-                speakOutput = "Hoje você teve aula de Orientação a Objeto, das 18:30 às 22:10";
-                parTelaAula.ExibirTelaAula(handlerInput);
+                dia = "hoje";
+                diaSemanaDesejado = returnDiaSemana(dia);
+                materiasComAulasNoDia = returnInfoAulas(aulas, diaSemanaDesejado);
+                frase = returnConsoleAula(materiasComAulasNoDia, tempo);
+                
+                speakOutput = frase;
+                exibirTelaAula(handlerInput, materiasComAulasNoDia);
             break;
             
             case "ontem": 
-                speakOutput = "Ontem você teve aula de gerênciaamento de software, das 18:45 às 22 horas";
-                parTelaAula.ExibirTelaAula(handlerInput);
+                dia = "ontem";
+                diaSemanaDesejado = returnDiaSemana(dia);
+                materiasComAulasNoDia = returnInfoAulas(aulas, diaSemanaDesejado);
+                frase = returnConsoleAula(materiasComAulasNoDia, tempo);
+                
+                speakOutput = frase;
+                exibirTelaAula(handlerInput, materiasComAulasNoDia);
             break;
 
             case "2ª": case "2.ª": case"2.ª feira" : case"segunda": case"segunda feira":
-                speakOutput = "Segunda você teve aula de matemática das 18 às 22 horas";
-                parTelaAula.ExibirTelaAula(handlerInput);
+                diaSemanaDesejado = "segunda-feira";
+                materiasComAulasNoDia = returnInfoAulas(aulas, diaSemanaDesejado);
+                frase = returnConsoleAula(materiasComAulasNoDia, tempo);
+                
+                speakOutput = frase;
+                exibirTelaAula(handlerInput, materiasComAulasNoDia);
             break;
             
             case "3ª": case "3.ª": case "3.ª feira": case "terça": case "terça feira":
-                 speakOutput = "terça você teve aula de web design das 19 às 22 horas";
-                 parTelaAula.ExibirTelaAula(handlerInput);
+                diaSemanaDesejado = "terça-feira";
+                materiasComAulasNoDia = returnInfoAulas(aulas, diaSemanaDesejado);
+                frase = returnConsoleAula(materiasComAulasNoDia, tempo);
+                
+                speakOutput = frase;
+                exibirTelaAula(handlerInput, materiasComAulasNoDia);
             break;
             
             case "4ª": case "4.ª": case "4.ª feira": case "quarta": case "quarta feira":
-                speakOutput = "quarta você teve aula de infraestrutura de rede das 17 ás 20 horas";
-                parTelaAula.ExibirTelaAula(handlerInput);
+                diaSemanaDesejado = "quarta-feira";
+                materiasComAulasNoDia = returnInfoAulas(aulas, diaSemanaDesejado);
+                frase = returnConsoleAula(materiasComAulasNoDia, tempo);
+                
+                speakOutput = frase;
+                exibirTelaAula(handlerInput, materiasComAulasNoDia);
             break;
                 
             case "5ª": case "5.ª": case "5.ª feira": case "quinta": case "quinta feira":
-                speakOutput = "quinta você teve aula de excel das 18 às 20:30 horas";
-                parTelaAula.ExibirTelaAula(handlerInput);
+                diaSemanaDesejado = "quinta-feira";
+                materiasComAulasNoDia = returnInfoAulas(aulas, diaSemanaDesejado);
+                frase = returnConsoleAula(materiasComAulasNoDia, tempo);
+                
+                speakOutput = frase;
+                exibirTelaAula(handlerInput, materiasComAulasNoDia);
             break;
                 
             case "6ª": case "6.ª": case "6.ª feira": case "sexta": case "sexta feira":
-                speakOutput="sexta você teve aula de lógica das 15 às 19 horas";
-                parTelaAula.ExibirTelaAula(handlerInput);
+                diaSemanaDesejado = "sexta-feira";
+                materiasComAulasNoDia = returnInfoAulas(aulas, diaSemanaDesejado);
+                frase = returnConsoleAula(materiasComAulasNoDia, tempo);
+                
+                speakOutput = frase;
+                exibirTelaAula(handlerInput, materiasComAulasNoDia);
             break;
             
-            case "sábado": case "domingo":
-                speakOutput="você não teve aulas marcadas neste dia";
-                parTelaAula.ExibirTelaAula(handlerInput);
-            break; 
+            case "sábado":
+                diaSemanaDesejado = "sábado";
+                materiasComAulasNoDia = returnInfoAulas(aulas, diaSemanaDesejado);
+                frase = returnConsoleAula(materiasComAulasNoDia, tempo);
+                
+                speakOutput = frase;
+                exibirTelaAula(handlerInput, materiasComAulasNoDia);
+            break;
+            
+            case "domingo":
+                diaSemanaDesejado = "domingo";
+                materiasComAulasNoDia = returnInfoAulas(aulas, diaSemanaDesejado);
+                frase = returnConsoleAula(materiasComAulasNoDia, tempo);
+                
+                speakOutput = frase;
+                exibirTelaAula(handlerInput, materiasComAulasNoDia);
+            break;
         }
     
         return handlerInput.responseBuilder
@@ -165,7 +264,7 @@ const HorarioCoordenadorIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HorarioCoordenadorIntent';
     },
     handle(handlerInput) {
-        const coordenador = filtrarCurso(usuarios, handlerInput);
+        const coordenador = filtrarCurso(usuario, handlerInput);
         
         const speakOutput = `O coordenador ${coordenador.coordenador.nome} está disponível na unidade ${coordenador.coordenador.unidade} todas as segundas e sextas, das ${coordenador.coordenador.horario}.`;
         exibirTelaCoordenador(handlerInput);
@@ -184,7 +283,7 @@ const PosGraduacaoIntentHandler = {
     },
     handle(handlerInput) {
         const speakOutput = 'A universidade fornece os seguintes cursos de Pós Graduação. Análises Clínicas e Patológicas, Engenharia Estrutural, Planejamento Tributário e Produção de Conteúdo Digital.';
-        exibirTelaCoordenador(handlerInput);
+        parTelaPosGraduacao.ExibirTelaPosGraduacao(handlerInput);
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -215,7 +314,7 @@ const InscricaoIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'InscricaoIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'Você precisa ter concluído o ensino médio para realizar a inscrição. Tendo atendido estes requisitos, inscreva-se pelo site www.unisuam.edu.br, ou ligue para o telefone 21 3882-9797. Ainda também é possível inscrever se pelo Whatsapp através da operação coruja no número 21 996-807-990.';
+        const speakOutput = 'Você precisa ter concluído o ensino médio para realizar a inscrição. Tendo atendido estes requisitos, inscreva-se pelo site www.universidadelima.edu.br, ou ligue para o telefone 21 3882-9797. Ainda também é possível inscrever se pelo Whatsapp através da operação coruja no número 21 996-807-990.';
          parTelaInscricao.ExibirTelaInscricao(handlerInput);
 
         return handlerInput.responseBuilder
@@ -233,7 +332,7 @@ const notasMateriasIntentHandler = {
     
     handle(handlerInput) {
         
-        const notas = filtrarNotas(usuarios, handlerInput);
+        const notas = filtrarNotas(usuario, handlerInput);
         
         let speakOutput = `Suas notas são, na A1 nota ${notas.notas.a1}, na A2 nota ${notas.notas.a2}, na A3 nota ${notas.notas.a3} e sua média final é ${notas.notas.media}.`;
         exibirTelaNota(handlerInput);
@@ -245,10 +344,6 @@ const notasMateriasIntentHandler = {
     }
     
 };
-
-
-
-
 
 const HelpIntentHandler = {
     canHandle(handlerInput) {

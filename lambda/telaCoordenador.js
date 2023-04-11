@@ -66,7 +66,7 @@ const datasource = {
                 "text": ""
             }
         ],
-        "logoUrl": "https://seeklogo.com/images/U/unisuam-logo-F9DC14A346-seeklogo.com.png"
+        "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Universidad_de_Lima_logo.png"
     }
 };
 

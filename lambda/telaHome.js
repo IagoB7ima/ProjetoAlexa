@@ -13,7 +13,7 @@ const datasource = {
                 "largeSourceUrl": null,
                 "sources": [
                     {
-                        "url": "https://desafiosdaeducacao.com.br/wp-content/uploads/2018/11/unisuam1.jpg",
+                        "url": "https://img.freepik.com/vetores-gratis/fundo-de-gradiente-de-linhas-azuis-dinamicas_23-2148995756.jpg",
                         "size": "large"
                     }
                 ]
@@ -24,8 +24,8 @@ const datasource = {
                     "text": ""
                 }
             },
-            "logoUrl": "https://seeklogo.com/images/U/unisuam-logo-F9DC14A346-seeklogo.com.png",
-            "hintText": "UNISUAM, Compromisso para a vida toda!"
+            "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Universidad_de_Lima_logo.png",
+            "hintText": "Universidade Lima, Compromisso para a vida toda!"
         }
     }
 };

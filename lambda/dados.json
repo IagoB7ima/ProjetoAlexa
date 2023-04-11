@@ -19,9 +19,9 @@
           "materias": [
             {
               "nome": "programação 1",
-              "horario": "08:00 - 10:00",
-              "dia_semana": "segunda feira",
-              "sala": "Sala 101",
+              "horario": "08:00 às 10:00",
+              "dia_semana": "segunda-feira",
+              "sala": "101",
               "professor": "João da Silva",
               "notas": {
                 "a1": 10.0,
@@ -32,9 +32,9 @@
             },
             {
               "nome": "banco de dados",
-              "horario": "10:00 - 12:00",
-              "dia_semana": "quarta feira",
-              "sala": "Sala 102",
+              "horario": "10:00 às 12:00",
+              "dia_semana": "quarta-feira",
+              "sala": "102",
               "professor": "Maria Santos",
               "notas": {
                 "a1": 8.0,
@@ -59,9 +59,9 @@
           "materias": [
             {
               "nome": "gestão de pessoas",
-              "horario": "19:00 - 21:00",
-              "dia_semana": "terça feira",
-              "sala": "Sala 201",
+              "horario": "19:00 às 21:00",
+              "dia_semana": "terça-feira",
+              "sala": "201",
               "professor": "Ana Souza",
               "notas": {
                 "a1": 8.0,
@@ -72,9 +72,9 @@
             },
             {
               "nome": "contabilidade",
-              "horario": "21:00 - 23:00",
-              "dia_semana": "quinta feira",
-              "sala": "Sala 202",
+              "horario": "21:00 às 23:00",
+              "dia_semana": "segunda-feira",
+              "sala": "202",
               "professor": "Carlos Oliveira",
               "notas": {
                 "a1": 0.0,

@@ -2,29 +2,29 @@ const moment = require('moment');
 require('moment/locale/pt-br');
 moment.locale('pt-br');
 
-function returnDiaSemana(dia) {
-    if (dia === "ontem") {
-      // obter a data de ontem
-      const ontem = moment().subtract(1, 'days');
-      // obter o nome do dia da semana de ontem
-      const diaSemanaDesejado = ontem.format('dddd');
-      //console.log(`Ontem foi ${diaSemanaDesejado}`);
-      return diaSemanaDesejado;
-    } else if (dia === "amanhã") {
-      // obter a data de amanhã
-      const amanha = moment().add(1, 'days');
-      // obter o nome do dia da semana de amanhã
-      const diaSemanaDesejado = amanha.format('dddd');
-      //console.log(`Amanhã será ${diaSemanaDesejado}`);
-      return diaSemanaDesejado;
-    } else if (dia === "hoje") {
-      // obter a data de hoje
-      const hoje = moment()
-      // obter o nome do dia da semana de hoje
-      const diaSemanaDesejado = hoje.format('dddd');
-      //console.log(`Hoje é ${diaSemanaDesejado}`);
-      return diaSemanaDesejado;
-    } 
+function obterDiaSemana(dia) {
+  const diasValidos = ["ontem", "hoje", "amanhã"];
+
+  if (!diasValidos.includes(dia)) {
+    throw new Error("Dia inválido");
   }
-  
-module.exports = returnDiaSemana;
+
+  const diaAtual = moment();
+  let diaSemanaDesejado = "";
+
+  switch (dia) {
+    case "ontem":
+      diaSemanaDesejado = diaAtual.subtract(1, 'days').format('dddd');
+      break;
+    case "hoje":
+      diaSemanaDesejado = diaAtual.format('dddd');
+      break;
+    case "amanhã":
+      diaSemanaDesejado = diaAtual.add(1, 'days').format('dddd');
+      break;
+  }
+
+  return diaSemanaDesejado;
+}
+
+module.exports = obterDiaSemana;

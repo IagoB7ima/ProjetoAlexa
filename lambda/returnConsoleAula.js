@@ -1,16 +1,15 @@
 function returnConsoleAula(materiasComAulasNoDia, tempo) {
-    var frase = '';
-    if(materiasComAulasNoDia.length === 1 && tempo === true) {
-      return frase = `${materiasComAulasNoDia[0].dia_semana} você terá aula de ${materiasComAulasNoDia[0].nome} das ${materiasComAulasNoDia[0].horario} horas na ${materiasComAulasNoDia[0].sala} com ${materiasComAulasNoDia[0].professor}`;
-    } else if(materiasComAulasNoDia.length === 1 && tempo === false) {
-      return frase = `${materiasComAulasNoDia[0].dia_semana} você teve aula de ${materiasComAulasNoDia[0].nome} das ${materiasComAulasNoDia[0].horario} horas na ${materiasComAulasNoDia[0].sala} com ${materiasComAulasNoDia[0].professor}`;
-    }else if (materiasComAulasNoDia.length === 2 && tempo === true) {
-      return frase = `${materiasComAulasNoDia[0].dia_semana} você terá aula de ${materiasComAulasNoDia[0].nome} das ${materiasComAulasNoDia[0].horario} horas na ${materiasComAulasNoDia[0].sala} com ${materiasComAulasNoDia[0].professor} e ${materiasComAulasNoDia[1].nome} das ${materiasComAulasNoDia[1].horario} horas na ${materiasComAulasNoDia[1].sala} com ${materiasComAulasNoDia[1].professor}`;
-    } else if (materiasComAulasNoDia.length === 2 && tempo === false) {
-      return frase = `${materiasComAulasNoDia[0].dia_semana} você teve aula de ${materiasComAulasNoDia[0].nome} das ${materiasComAulasNoDia[0].horario} horas na ${materiasComAulasNoDia[0].sala} com ${materiasComAulasNoDia[0].professor} e ${materiasComAulasNoDia[1].nome} das ${materiasComAulasNoDia[1].horario} horas na ${materiasComAulasNoDia[1].sala} com ${materiasComAulasNoDia[1].professor}`;
-    } else {
-      return frase = 'Você não tem aula neste dia!';
-    }
+    if (materiasComAulasNoDia.length === 0) {
+        return 'Você não tem aula neste dia!';
+      }
+    
+      const frase = materiasComAulasNoDia.map(aula => {
+        const { dia_semana, nome, horario, sala, professor } = aula;
+        const acao = tempo ? 'terá' : 'teve';
+        return `${dia_semana} você ${acao} aula de ${nome} das ${horario} horas na ${sala} com ${professor}`;
+      });
+    
+      return frase.join(' e ');
   }
 
   module.exports = returnConsoleAula;

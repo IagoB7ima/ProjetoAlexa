@@ -6,8 +6,6 @@ const fs = require('fs');
 const data = fs.readFileSync('./dados.json');
 const usuario = JSON.parse(data).usuarios;
 const aulas = JSON.parse(data);
-
-
 const returnInfoAulas = require('./returnInfoAulas.js');
 
 function exibirTelaAula(handlerInput, materiasComAulasNoDia){
@@ -24,7 +22,7 @@ function exibirTelaAula(handlerInput, materiasComAulasNoDia){
             "largeSourceUrl": null,
             "sources": [
                 {
-                    "url": "https://d2o906d8ln7ui1.cloudfront.net/images/templates_v3/textlist/AlexaTextListBackground_Dark.png",
+                    "url": "https://i.pinimg.com/originals/6e/cc/ca/6eccca12bec62e72da9cf74162b7c551.png",
                     "size": "large"
                 }
             ]
@@ -78,7 +76,7 @@ function exibirTelaAula(handlerInput, materiasComAulasNoDia){
             "largeSourceUrl": null,
             "sources": [
                 {
-                    "url": "https://d2o906d8ln7ui1.cloudfront.net/images/templates_v3/textlist/AlexaTextListBackground_Dark.png",
+                    "url": "https://i.pinimg.com/originals/6e/cc/ca/6eccca12bec62e72da9cf74162b7c551.png",
                     "size": "large"
                 }
             ]
@@ -164,7 +162,7 @@ function exibirTelaAula(handlerInput, materiasComAulasNoDia){
             "largeSourceUrl": null,
             "sources": [
                 {
-                    "url": "https://d2o906d8ln7ui1.cloudfront.net/images/templates_v3/textlist/AlexaTextListBackground_Dark.png",
+                    "url": "https://i.pinimg.com/originals/6e/cc/ca/6eccca12bec62e72da9cf74162b7c551.png",
                     "size": "large"
                 }
             ]

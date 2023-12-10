@@ -28,7 +28,7 @@ const LaunchRequestHandler = {
     },
     handle(handlerInput) {
         
-        const speakOutput = "Universidade Lima. Compromisso para a vida toda. Aqui você poderá acessar o seu calendário de aulas, o boletim de notas, horário do seu coordenador e mais. O que você gostaria ?";
+        const speakOutput = "Centro Universitário Augusto Motta. Compromisso para a vida toda. Aqui você poderá acessar o seu calendário de aulas, o boletim de notas, horário do seu coordenador e mais. O que você gostaria ?";
         parTelaHome.ExibirTelaHome(handlerInput);
         
         return handlerInput.responseBuilder
@@ -51,14 +51,12 @@ const AulaIntentHandler = {
         var diaSemanaDesejado;
         var materiasComAulasNoDia;
         var frase;
-        var dia;
         var tempo = true; 
         
         switch(parDiaSemana){
              
             case "hoje":
-                dia = "hoje";
-                diaSemanaDesejado = returnDiaSemana(dia);
+                diaSemanaDesejado = returnDiaSemana(parDiaSemana);
                 materiasComAulasNoDia = returnInfoAulas(aulas, diaSemanaDesejado);
                 frase = returnConsoleAula(materiasComAulasNoDia, tempo);
                 
@@ -67,8 +65,7 @@ const AulaIntentHandler = {
             break;
             
             case "amanhã":
-                dia = "amanhã";
-                diaSemanaDesejado = returnDiaSemana(dia);
+                diaSemanaDesejado = returnDiaSemana(parDiaSemana);
                 materiasComAulasNoDia = returnInfoAulas(aulas, diaSemanaDesejado);
                 frase = returnConsoleAula(materiasComAulasNoDia, tempo);
                 
@@ -161,14 +158,12 @@ const AulaPassadoIntentHandler = {
         var diaSemanaDesejado;
         var materiasComAulasNoDia;
         var frase;
-        var dia;
         var tempo = false;
         
         switch(parDiaSemana){
         
             case "hoje":
-                dia = "hoje";
-                diaSemanaDesejado = returnDiaSemana(dia);
+                diaSemanaDesejado = returnDiaSemana(parDiaSemana);
                 materiasComAulasNoDia = returnInfoAulas(aulas, diaSemanaDesejado);
                 frase = returnConsoleAula(materiasComAulasNoDia, tempo);
                 
@@ -177,8 +172,7 @@ const AulaPassadoIntentHandler = {
             break;
             
             case "ontem": 
-                dia = "ontem";
-                diaSemanaDesejado = returnDiaSemana(dia);
+                diaSemanaDesejado = returnDiaSemana(parDiaSemana);
                 materiasComAulasNoDia = returnInfoAulas(aulas, diaSemanaDesejado);
                 frase = returnConsoleAula(materiasComAulasNoDia, tempo);
                 
@@ -314,7 +308,7 @@ const InscricaoIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'InscricaoIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'Você precisa ter concluído o ensino médio para realizar a inscrição. Tendo atendido estes requisitos, inscreva-se pelo site www.universidadelima.edu.br, ou ligue para o telefone 21 3882-9797. Ainda também é possível inscrever se pelo Whatsapp através da operação coruja no número 21 996-807-990.';
+        const speakOutput = 'Você precisa ter concluído o ensino médio para realizar a inscrição. Tendo atendido estes requisitos, inscreva-se pelo site www.unisuam.edu.br, ou ligue para o telefone 21 3882-9797. Ainda também é possível inscrever se pelo Whatsapp através da operação coruja no número 21 996-807-990.';
          parTelaInscricao.ExibirTelaInscricao(handlerInput);
 
         return handlerInput.responseBuilder

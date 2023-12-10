@@ -13,7 +13,7 @@ const datasource = {
                 "largeSourceUrl": null,
                 "sources": [
                     {
-                        "url": "https://img.freepik.com/vetores-gratis/fundo-de-gradiente-de-linhas-azuis-dinamicas_23-2148995756.jpg",
+                        "url": "https://i.pinimg.com/originals/6e/cc/ca/6eccca12bec62e72da9cf74162b7c551.png",
                         "size": "large"
                     }
                 ]
@@ -24,7 +24,7 @@ const datasource = {
                     "text": ""
                 }
             },
-            "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Universidad_de_Lima_logo.png",
+            "logoUrl": "",
             "hintText": "Universidade Lima, Compromisso para a vida toda!"
         }
     }

@@ -17,7 +17,7 @@ const datasource = {
     multipleChoiceTemplateData: {
         type: "object",
         properties: {
-            backgroundImage: "https://img.freepik.com/vetores-gratis/fundo-de-gradiente-de-linhas-azuis-dinamicas_23-2148995756.jpg",
+            backgroundImage: "https://i.pinimg.com/originals/6e/cc/ca/6eccca12bec62e72da9cf74162b7c551.png",
             titleText: `${notas.nome}`,
             choices: [
                 `A1: ${notas.notas.a1}`,
@@ -26,7 +26,7 @@ const datasource = {
                 `Média: ${notas.notas.media}`
             ],
             choiceListType: "number",
-            headerAttributionImage: "https://seeklogo.com/images/U/unisuam-logo-F9DC14A346-seeklogo.com.png",
+            headerAttributionImage: "",
             footerHintText: "Universidade UNISUAM, Compromisso para a vida toda!"
         }
     }

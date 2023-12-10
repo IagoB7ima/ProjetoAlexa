@@ -2,11 +2,9 @@ const Alexa = require("ask-sdk-core");
 
 const DOCUMENT_ID = "telaCoordenador";
 
-
 const fs = require('fs');
 const data = fs.readFileSync('./dados.json');
 const usuarios = JSON.parse(data).usuarios;
-
 const filtrarCurso = require('./filterUser.js');
 
 function exibirTelaCoordenador(handlerInput){
@@ -23,7 +21,7 @@ const datasource = {
             "largeSourceUrl": null,
             "sources": [
                 {
-                    "url": "https://img.freepik.com/vetores-gratis/fundo-de-gradiente-de-linhas-azuis-dinamicas_23-2148995756.jpg",
+                    "url": "https://i.pinimg.com/originals/6e/cc/ca/6eccca12bec62e72da9cf74162b7c551.png",
                     "size": "large"
                 }
             ]
